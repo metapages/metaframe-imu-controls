@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Box, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
 import { Home } from "/@/routes/home";
 import { Route as RouteDial } from "/@/routes/dial";
+import { Route as RouteSwitch } from "/@/routes/switch";
 import { ButtonHelp } from "/@/components/ButtonHelp";
 import { ButtonOptionsMenu, Option } from "/@/components/ButtonOptionsMenu";
 import { useHashParam } from "@metapages/metaframe-hook";
@@ -21,6 +22,7 @@ export const App: FunctionalComponent = () => {
 
   switch(mode) {
     case "dial": return <RouteDial />;
+    case "switch": return <RouteSwitch />;
     default: return <Home />;
   }
   // return (
