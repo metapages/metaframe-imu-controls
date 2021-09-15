@@ -8,15 +8,19 @@ import {
   IconButton,
   DrawerCloseButton,
 } from "@chakra-ui/react";
-import { isIframe } from "@metapages/metaframe-hook";
 import { QuestionIcon } from "@chakra-ui/icons";
 
 export const ButtonHelp: FunctionalComponent<{ url?: string }> = ({ url }) => {
-  const [open, setOpen] = useState<boolean>(isIframe() ? false : true);
+  const [open, setOpen] = useState<boolean>(false);
 
-  url = url
-    ? url
-    : `${window.location.origin}${window.location.pathname}/README.md`;
+  if (!url) {
+    url = `${window.location.origin}${window.location.pathname.endsWith("/") ? window.location.pathname : window.location.pathname + "/"}README.md`
+  }
+  if (!url.startsWith("http")) {
+    url = `${window.location.origin}${window.location.pathname.endsWith("/") ? window.location.pathname : window.location.pathname + "/"}${url}`
+  }
+
+  console.log('url', url);
 
   const onClick = useCallback(() => {
     setOpen(!open);

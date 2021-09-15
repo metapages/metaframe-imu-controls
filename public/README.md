@@ -1,25 +1,8 @@
-# This is a ready-to-fork template repository
+# [Metaframe](https://metapages.org/): translate IMU raw measurements into useful controls
 
-## Features:
+## References
 
-  - [Github Pages](https://pages.github.com/) publishing
-    - automatic versioning:
-      - `/`: latest
-      - `/v1.5.2/`: that version tag (so all published versions are available forever)
-  - [npm](https://www.npmjs.com/) module publishing
-    - automatic versioning, linked with above
-    - external package versioned with the publised website
-  - Common UI elements
-    - Help button showing the (rendered) local `./Readme.md` file
-    - Options (configurable) stored encoded in the URL hash params
-  - Metaframe outputs updated below, when connected.
-  - `just`file powered, dockerized, automated with dual human/CI controls
-
-## Steps:
-
-  1. Fork this repo
-  2. Clone locally
-  3. Modify `package.json` fields to match your own repository e.g. change the module name
-  4. `just dev`
-       - Modify code and publish:
-       - `just publish`
+  - **IMU (accelerometer gyroscopt, pitch yaw roll, quaternions) iOS**
+    - <https://developer.apple.com/documentation/coremotion/getting_processed_device-motion_data/understanding_reference_frames_and_device_attitude>
+  - **This repo is forked from a template:**
+    - <https://github.com/metapages/metaframe-template-preact/blob/main/public/README.md>
