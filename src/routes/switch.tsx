@@ -43,7 +43,6 @@ export const SwitchControl: FunctionalComponent = () => {
       return;
     }
     const onInputs = (inputs: MetaframeInputMap): void => {
-      console.log("metaframe.inputs", metaframe.inputs);
       if (inputs?.["o"]?.["pitch"] !== undefined) {
         let pitch: number = inputs?.["o"]?.["pitch"];
         const yaw: number = inputs?.["o"]?.["yaw"];
