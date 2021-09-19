@@ -14,13 +14,19 @@ export const ButtonHelp: FunctionalComponent<{ url?: string }> = ({ url }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   if (!url) {
-    url = `${window.location.origin}${window.location.pathname.endsWith("/") ? window.location.pathname : window.location.pathname + "/"}README.md`
+    url = `${window.location.origin}${
+      window.location.pathname.endsWith("/")
+        ? window.location.pathname
+        : window.location.pathname + "/"
+    }README.md`;
   }
   if (!url.startsWith("http")) {
-    url = `${window.location.origin}${window.location.pathname.endsWith("/") ? window.location.pathname : window.location.pathname + "/"}${url}`
+    url = `${window.location.origin}${
+      window.location.pathname.endsWith("/")
+        ? window.location.pathname
+        : window.location.pathname + "/"
+    }${url}`;
   }
-
-  console.log('url', url);
 
   const onClick = useCallback(() => {
     setOpen(!open);

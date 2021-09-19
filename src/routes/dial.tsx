@@ -1,27 +1,20 @@
 import { FunctionalComponent } from "preact";
-import { useCallback, useState, useContext, useEffect } from "preact/hooks";
-import {
-  Box,
-  Flex,
-  Heading,
-  Select,
-  SimpleGrid,
-  Spacer,
-} from "@chakra-ui/react";
+import { useState, useEffect } from "preact/hooks";
+import { Flex, Spacer } from "@chakra-ui/react";
 import { Basic } from "react-dial-knob";
 import { useMetaframe } from "@metapages/metaframe-hook";
 import { MetaframeInputMap, Metaframe } from "@metapages/metapage";
 import { ButtonHelp } from "/@/components/ButtonHelp";
 import { ButtonOptionsMenu, Option } from "/@/components/ButtonOptionsMenu";
 
-  const options: Option[] = [
-    {
-      name: "min",
-      displayName: "A boolean option",
-      default: true,
-      type: "boolean",
-    },
-  ];
+const options: Option[] = [
+  {
+    name: "min",
+    displayName: "A boolean option",
+    default: true,
+    type: "boolean",
+  },
+];
 
 export const Route: FunctionalComponent = () => {
   return (
@@ -47,7 +40,6 @@ export const Dial: FunctionalComponent = () => {
       return;
     }
     const onInputs = (inputs: MetaframeInputMap): void => {
-      // console.log('metaframe.inputs', metaframe.inputs);
       if (inputs?.["o"]?.["pitch"] !== undefined) {
         let pitch: number = inputs?.["o"]?.["pitch"];
         const yaw: number = inputs?.["o"]?.["yaw"];
@@ -62,12 +54,9 @@ export const Dial: FunctionalComponent = () => {
         if (deg < 0) {
           deg = 180 - deg;
         }
-        console.log(
-          `deg=${deg}  pitch=${inputs?.["o"]?.["pitch"]}  yaw=${inputs?.["o"]?.["yaw"]}  roll=${inputs?.["o"]?.["roll"]}`
-        );
 
         metaframe.setOutput("degrees", deg);
-        metaframe.setOutput("pitch", pitch);
+        metaframe.setOutput("radians", pitch);
 
         setValue(deg);
       }
@@ -78,7 +67,9 @@ export const Dial: FunctionalComponent = () => {
     };
   }, [metaframeObj, setValue]);
 
-  // console.log('value', value);
+  useEffect(() => {
+    metaframeObj?.metaframe?.setOutput("value", value);
+  }, [value, metaframeObj]);
 
   return (
     <Basic
@@ -92,7 +83,7 @@ export const Dial: FunctionalComponent = () => {
         activeColor: "#f33",
       }}
       onValueChange={setValue}
-    //   ariaLabelledBy={"my-label"}
+      //   ariaLabelledBy={"my-label"}
     >
       {/* <label id={"my-label"}>Degrees</label> */}
     </Basic>

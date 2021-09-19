@@ -1,16 +1,19 @@
 {
-	"version": "0.3",
-	"metadata": {
-		"title": "metaframe-template"
-	},
-	"inputs": {
-		"*": {
-			"type": "application/octet-stream:base64"
-		}
-	},
-    "outputs": {
-		"*": {
-			"type": "application/octet-stream:base64"
-		}
+  "version": "0.3",
+  "metadata": {
+    "title": "metaframe-template"
+  },
+  "inputs": {
+    "o": {
+		"type": "imu/orientation"
 	}
+  },
+  "outputs": {
+    "degrees": {
+      "type": "number"
+    },
+    "radians": {
+      "type": "number"
+    }
+  }
 }
